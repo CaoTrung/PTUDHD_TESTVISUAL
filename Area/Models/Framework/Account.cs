@@ -11,9 +11,9 @@ namespace Models.Framework
     {
         [Key]
         [StringLength(30)]
-        public string UserName { get; set; }
+        public string userName { get; set; }
 
-        [StringLength(50)]
-        public string Password { get; set; }
+        [StringLength(30)]
+        public string passWord { get; set; }
     }
 }

@@ -9,10 +9,10 @@ namespace Models
 {
     public class AccountModel
     {
-        private LoginDbContext context = null;
+        private OnlineDbcontext context = null;
         public AccountModel()
         {
-            context = new LoginDbContext();
+            context = new OnlineDbcontext();
         }
 
         public bool Login(string userName, string password)
@@ -22,8 +22,8 @@ namespace Models
                 new SqlParameter("@UserName", userName),
                 new SqlParameter("@Password", password),
             };
-            var res = context.Database.SqlQuery<bool>("Sp_account_login @UserName, @Password", sqlParams).SingleOrDefault();
-            return res;
+            var res = context.Database.SqlQuery<int>("usp_login @UserName, @Password", sqlParams).SingleOrDefault();
+            return Convert.ToBoolean(res);
         }
     }
 }
